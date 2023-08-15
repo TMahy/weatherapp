@@ -1,24 +1,36 @@
 async function getWeather(location){
     const weatherApiKey = `860cab3f0e2041ceb07160613231308`;
 
-    const currentWeather = getCurrentWeather(location);
-    const forecastWeather = getForecastWeather(location);
+    const currentWeather = await getCurrentWeather(location);
+    const forecastWeather = await getForecastWeather(location);
 
     
-    console.log(currentWeather);
+    console.log(currentWeather, forecastWeather);
 }
-
-getWeather('bristol');
-
-
 
 async function getCurrentWeather(location){
-    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${weatherApiKey}&q=${location}`);
+    try{
+    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=860cab3f0e2041ceb07160613231308&q=${location}`);
     const currentWeatherData = await response.json();
     return currentWeatherData;
+    }
+    catch(error){
+        return error;
+    }
 }
+
 async function getForecastWeather(location){
-    const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${weatherApiKey}&q=${location}`);
+    try{
+    const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=860cab3f0e2041ceb07160613231308&q=${location}`);
     const currentWeatherData = await response.json();
     return currentWeatherData;
+    }
+    catch(error){
+        return error;
+    }
 }
+
+getWeather('bristol'); 
+
+
+
