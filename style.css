@@ -1,0 +1,51 @@
+*{
+    border: 1px solid black;
+    font-family: 'Sora', sans-serif;
+}
+
+body{
+    background-color: gray;
+}
+/* Container styles */
+#weather-container{
+    position: relative;
+    margin: 0 auto;
+
+    width: 600px;
+    height: 90vh;
+
+    border-radius: 10px;
+    background-color: white;
+}
+
+/* Location container styles */
+#location-container{
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    font-weight:500;
+}
+
+/* Weather summary container styles */
+#weather-summary-container{
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    font-weight:300;
+}
+
+#weather-summary-temp{
+    font-size: 100px;
+}
+
+#weather-summary-temp span{
+    font-size: 50px;
+}
+
+#weather-summary-text{
+    font-size: 30px;
+}
+
+#weather-summary-icon{
+    font-size: 100px;
+}
