@@ -3,10 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather App</title>
 </head>
 <body>
-    
+    <div id='weather-container'>
+        <div id="location-container">
+            <h1>Bristol</h1>
+        </div>
+        <div id="weather-summary-container">
+            <div id="weather-summary-temp">9<span id="temp-scale">°C</span></div>
+            <div id="weather-summary-text">Chilly</div>
+            <div id="weather-summary-icon"><i class="fa-solid fa-cloud-sun"></i></div>
+        </div>
+        <div id="weather-additional-container">
+            <div id="weather-additional-nav">
+                <h2>Today's details</h2>
+                <h2>Forecast</h2>
+            </div>
+            <div id="weather-additional">
+                <div id="weather-additional-today"></div>
+                <div id="weather-additional-forecast"></div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="script.js"></script>
+<script src="https://kit.fontawesome.com/1170179a49.js" crossorigin="anonymous"></script>
 </html>
