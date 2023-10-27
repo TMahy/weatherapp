@@ -3,18 +3,28 @@ async function getWeather(location){
 
     const forecastWeather = await getForecastWeather(location);
     
-    // console.log(forecastWeather.current, forecastWeather.forecast);
-    // console.log(forecastWeather.current.feelslike_c, forecastWeather.current.temp_c, forecastWeather.current.condition.text);
     const weather = {
-        current: forecastWeather.current,
-        current_temp: forecastWeather.current.temp_c,
-        current_cond_desc: forecastWeather.current.condition.text,
-        // current_cond_icon: forecastWeather.current.condition.icon, 
-
-        forecast_array: forecastWeather.forecast.forecastday
+        temp: forecastWeather.current.temp_c,
+        summary: forecastWeather.current.condition.text,
+        icon: forecastWeather.current.condition.icon,
+        forecast_1: {
+            date:  new Date(forecastWeather.forecast.forecastday[0].date),
+            max_temp: Math.round(forecastWeather.forecast.forecastday[0].day.maxtemp_c),
+            min_temp: Math.round(forecastWeather.forecast.forecastday[0].day.mintemp_c),
+        },
+        forecast_2: {
+            date: new Date(forecastWeather.forecast.forecastday[1].date),
+            max_temp: Math.round(forecastWeather.forecast.forecastday[1].day.maxtemp_c),
+            min_temp: Math.round(forecastWeather.forecast.forecastday[1].day.mintemp_c),
+        },
+        forecast_3: {
+            date: new Date(forecastWeather.forecast.forecastday[2].date),
+            max_temp: Math.round(forecastWeather.forecast.forecastday[2].day.maxtemp_c),
+            min_temp: Math.round(forecastWeather.forecast.forecastday[2].day.mintemp_c),
+        }
     }
 
-    console.log(weather.current, weather.current_temp, weather.forecast_array);
+    return weather;
 }
 
 async function getForecastWeather(location){

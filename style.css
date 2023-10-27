@@ -70,7 +70,7 @@ body {
 #weather-summary-container{
 
     /* border: 5px solid rgba(211, 211, 211); */
-    background: linear-gradient(skyblue, rgb(35, 117, 150));
+    background: linear-gradient(rgb(31, 48, 55), rgb(35, 117, 150));
     border-radius: 10px;
 
     position: relative;
@@ -80,21 +80,24 @@ body {
     font-weight:300;
     height: 60%;
 
+    color: white;
     display: grid;
     justify-content: center;
     align-content: center;
 }
 
 #weather-summary-temp{
-    font-size: 100px;
+    font-size: 80px;
 }
 
 #weather-summary-text{
-    font-size: 30px;
+    font-size: 20px;
+    font-weight: 200;
 }
 
-#weather-summary-icon{
-    font-size: 100px;
+#weather-summary-icon img{
+   width: 192px;
+   height: auto;
 }
 
 /* weather-additional styles */
