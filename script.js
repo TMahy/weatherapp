@@ -5,7 +5,7 @@ async function getWeather(location){
 
     const weather = {
         temp: forecastWeather.current.temp_c,
-        summary: forecastWeather.current.condition.text,
+        text: forecastWeather.current.condition.text,
         icon: forecastWeather.current.condition.icon,
         forecast_1: {
             date:  new Date(forecastWeather.forecast.forecastday[0].date),
@@ -24,6 +24,8 @@ async function getWeather(location){
         }
     }
 
+    console.log(forecastWeather.current);
+
     return weather;
 }
 
@@ -40,18 +42,49 @@ async function getForecastWeather(location){
 }
 
 
-async function displayWeather(){
+async function displayWeather(location = 'Bristol'){
 
-    const tempEl = document.getElementById('weather-summary-temp');
 
-    const location = 'bristol'
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const weather = await getWeather(location);
 
+    const tempEl = document.getElementById("weather-temp");
     tempEl.textContent = weather.temp;
+    const textEl = document.getElementById("weather-text");
+    textEl.textContent = weather.text;
+    const iconEl = document.getElementById("weather-icon");
+    iconEl.src = `//cdn.weatherapi.com/weather/128x128/day/${weather.icon.slice(-7)}`; //to get a slightly higher quality icon (api returns 64x64 icon), this assumes all icons 'codes' are 3 digits.
 
+    const fc1El = document.getElementById("forecast_1");
+    const fc2El = document.getElementById("forecast_2");
+    const fc3El = document.getElementById("forecast_3");
+ 
+    fc1El.querySelector('.fc-day').textContent = days[weather.forecast_1.date.getDay()];
+    fc1El.querySelector('.min-temp').textContent = weather.forecast_1.min_temp;
+    fc1El.querySelector('.max-temp').textContent = weather.forecast_1.max_temp;
+
+    fc2El.querySelector('.fc-day').textContent = days[weather.forecast_2.date.getDay()];
+    fc2El.querySelector('.min-temp').textContent = weather.forecast_2.min_temp;
+    fc2El.querySelector('.max-temp').textContent = weather.forecast_2.max_temp;
+
+    fc3El.querySelector('.fc-day').textContent = days[weather.forecast_3.date.getDay()];
+    fc3El.querySelector('.min-temp').textContent = weather.forecast_3.min_temp;
+    fc3El.querySelector('.max-temp').textContent = weather.forecast_3.max_temp;
 }
 
-getWeather('bristol'); 
+// getWeather('bristol'); 
+
+displayWeather();
+
+
+const search = document.getElementById('location-input')
+
+search.addEventListener("keyup", ({key})=>{
+    if (key === 'Enter'){
+        const location = search.value;
+        displayWeather(location);
+    }
+})
 
 
 

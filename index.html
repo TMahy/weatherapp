@@ -10,27 +10,30 @@
 <body>
     <div id='weather-container'>
         <div id="location-container">
-            <h1 id="location">Bristol</h1>
+            
+            <input type="text" id="location-input" placeholder="Search...">
         </div>
         <div id="weather-summary-container">
-            <div id="weather-summary-temp">9<span class="temp-scale">°</span></div>
-            <div id="weather-summary-text">Chilly</div>
-            <div id="weather-summary-icon"><img src='//cdn.weatherapi.com/weather/128x128/day/296.png'></div>
+            <h1 id="location">Bristol</h1>
+            <h2 id="time">00:00</h2>
+            <div id="weather-summary-temp"><span id="weather-temp">9</span><span class="temp-scale">°</span></div>
+            <div id="weather-summary-text"><span id="weather-text">Chilly</span></div>
+            <div id="weather-summary-icon"><img id='weather-icon' src='//cdn.weatherapi.com/weather/128x128/day/296.png'></div>
         </div>
         <div id="weather-additional-container">
             <h2>Forecast</h2>
             <div id="weather-additional-forecast">
                 <div class="forecast-day" id="forecast_1">
-                    <div class="forcast-day-dow">Monday</div>
-                    <div class="forecast-day-temp">10<span class="temp-scale">°</span></div>
+                    <div class="forcast-day-dow"><span class="fc-day">Monday</span><span id="fc-today"> (Today)</span></div>
+                    <div class="forecast-day-temp"><span class="min-temp">10</span><span class="temp-scale">°</span>-<span class="max-temp">10</span><span class="temp-scale">°</span></div>
                 </div>
                 <div class="forecast-day" id="forecast_2">
-                    <div class="forcast-day-dow">Monday</div>
-                    <div class="forecast-day-temp">10<span class="temp-scale">°</span></div>
+                    <div class="forcast-day-dow"><span class="fc-day">Monday</span></div>
+                    <div class="forecast-day-temp"><span class="min-temp">10</span><span class="temp-scale">°</span>-<span class="max-temp">10</span><span class="temp-scale">°</span></div>
                 </div>
                 <div class="forecast-day" id="forecast_3">
-                    <div class="forcast-day-dow">Monday</div>
-                    <div class="forecast-day-temp">10<span class="temp-scale">°</span></div>
+                    <div class="forcast-day-dow"><span class="fc-day">Monday</span></div>
+                    <div class="forecast-day-temp"><span class="min-temp">10</span><span class="temp-scale">°</span>-<span class="max-temp">10</span><span class="temp-scale">°</span></div>
                 </div>
             </div>
         </div>
