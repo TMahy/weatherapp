@@ -2,7 +2,7 @@ async function getWeather(location){
     const weatherApiKey = `860cab3f0e2041ceb07160613231308`;
 
     const forecastWeather = await getForecastWeather(location);
-    
+
     const weather = {
         temp: forecastWeather.current.temp_c,
         summary: forecastWeather.current.condition.text,
@@ -37,6 +37,18 @@ async function getForecastWeather(location){
     catch(error){
         return error;
     }
+}
+
+
+async function displayWeather(){
+
+    const tempEl = document.getElementById('weather-summary-temp');
+
+    const location = 'bristol'
+    const weather = await getWeather(location);
+
+    tempEl.textContent = weather.temp;
+
 }
 
 getWeather('bristol'); 
