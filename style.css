@@ -1,45 +1,92 @@
 *{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     font-family: 'Sora', sans-serif;
+    box-sizing: border-box;
 }
 
-body{
-    background-color: gray;
+body {
+    background: linear-gradient(-45deg, #ee7752, #fbd565, #23a6d5, #2364d5);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+ 
+    50% {
+        background-position: 100% 50%;
+    }
+ 
+    100% {
+        background-position: 0% 50%;
+    }
 }
 /* Container styles */
 #weather-container{
     position: relative;
     margin: 0 auto;
-
+    padding: 10px 10px 10px 10px;
+    top: 50px;
     width: 600px;
-    height: 90vh;
 
     border-radius: 10px;
     background-color: white;
 }
 
+@media screen and (max-width:800px) {
+    #weather-container{
+        width: 75vw;
+    }    
+}
+
+@media screen and (max-width:500px) {
+    #weather-container{
+        width: 350px;
+    }    
+}
 /* Location container styles */
 #location-container{
+
+    background-color: rgba(211, 211, 211);
+            
     position: relative;
     margin: 0 auto;
-    text-align: center;
+    margin-bottom: 5px;
+    
+    border-radius: 10px;
+
+    padding:1px;
+}
+
+#location{
     font-weight:500;
+    text-align: center;
 }
 
 /* Weather summary container styles */
 #weather-summary-container{
+
+    /* border: 5px solid rgba(211, 211, 211); */
+    background: linear-gradient(skyblue, rgb(35, 117, 150));
+    border-radius: 10px;
+
     position: relative;
     margin: 0 auto;
+    margin-bottom: 5px;
     text-align: center;
     font-weight:300;
+    height: 60%;
+
+    display: grid;
+    justify-content: center;
+    align-content: center;
 }
 
 #weather-summary-temp{
     font-size: 100px;
-}
-
-#weather-summary-temp span{
-    font-size: 50px;
 }
 
 #weather-summary-text{
@@ -49,3 +96,39 @@ body{
 #weather-summary-icon{
     font-size: 100px;
 }
+
+/* weather-additional styles */
+#weather-additional-container{
+    position: relative;
+    height: 25%;
+
+    background-color: rgba(211, 211, 211);
+    border-radius: 10px;
+
+    padding-bottom: 10px;
+}
+
+#weather-additional-container h2{
+    position:relative;
+    margin: 0 5%;
+    padding: 10px 0 10px 0;
+}
+
+/* forecast styling */
+#weather-additional-forecast{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    
+}
+
+.forecast-day{
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
