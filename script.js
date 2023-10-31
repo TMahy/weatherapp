@@ -3,28 +3,33 @@ async function getWeather(location){
     
     const forecastWeather = await getForecastWeather(location);
     if(forecastWeather){
-    const weather = {
-        temp: Math.round(forecastWeather.current.temp_c),
-        text: forecastWeather.current.condition.text,
-        icon: forecastWeather.current.condition.icon,
-        forecast_1: {
-            date:  new Date(forecastWeather.forecast.forecastday[0].date),
-            max_temp: Math.round(forecastWeather.forecast.forecastday[0].day.maxtemp_c),
-            min_temp: Math.round(forecastWeather.forecast.forecastday[0].day.mintemp_c),
-        },
-        forecast_2: {
-            date: new Date(forecastWeather.forecast.forecastday[1].date),
-            max_temp: Math.round(forecastWeather.forecast.forecastday[1].day.maxtemp_c),
-            min_temp: Math.round(forecastWeather.forecast.forecastday[1].day.mintemp_c),
-        },
-        forecast_3: {
-            date: new Date(forecastWeather.forecast.forecastday[2].date),
-            max_temp: Math.round(forecastWeather.forecast.forecastday[2].day.maxtemp_c),
-            min_temp: Math.round(forecastWeather.forecast.forecastday[2].day.mintemp_c),
+        const weather = {
+            temp: Math.round(forecastWeather.current.temp_c),
+            text: forecastWeather.current.condition.text,
+            icon: forecastWeather.current.condition.icon,
+            forecast_1: {
+                date:  new Date(forecastWeather.forecast.forecastday[0].date),
+                max_temp: Math.round(forecastWeather.forecast.forecastday[0].day.maxtemp_c),
+                min_temp: Math.round(forecastWeather.forecast.forecastday[0].day.mintemp_c),
+                precip: forecastWeather.forecast.forecastday[0].day.daily_chance_of_rain,
+                icon: forecastWeather.forecast.forecastday[0].day.condition.icon
+            },
+            forecast_2: {
+                date: new Date(forecastWeather.forecast.forecastday[1].date),
+                max_temp: Math.round(forecastWeather.forecast.forecastday[1].day.maxtemp_c),
+                min_temp: Math.round(forecastWeather.forecast.forecastday[1].day.mintemp_c),
+                precip: forecastWeather.forecast.forecastday[1].day.daily_chance_of_rain,
+                icon: forecastWeather.forecast.forecastday[1].day.condition.icon
+            },
+            forecast_3: {
+                date: new Date(forecastWeather.forecast.forecastday[2].date),
+                max_temp: Math.round(forecastWeather.forecast.forecastday[2].day.maxtemp_c),
+                min_temp: Math.round(forecastWeather.forecast.forecastday[2].day.mintemp_c),
+                precip: forecastWeather.forecast.forecastday[2].day.daily_chance_of_rain,
+                icon: forecastWeather.forecast.forecastday[2].day.condition.icon
+            }
         }
-    }
-
-    return weather;
+        return weather;
     }
     return null;
 }
@@ -65,14 +70,20 @@ async function displayWeather(location = 'Bristol'){
     fc1El.querySelector('.fc-day').textContent = days[weather.forecast_1.date.getDay()];
     fc1El.querySelector('.min-temp').textContent = weather.forecast_1.min_temp;
     fc1El.querySelector('.max-temp').textContent = weather.forecast_1.max_temp;
+    fc1El.querySelector('.precip').textContent = weather.forecast_1.precip;
+    fc1El.querySelector('.fc-icon').src = `//cdn.weatherapi.com/weather/128x128/day/${weather.forecast_1.icon.slice(-7)}`;
 
     fc2El.querySelector('.fc-day').textContent = days[weather.forecast_2.date.getDay()];
     fc2El.querySelector('.min-temp').textContent = weather.forecast_2.min_temp;
     fc2El.querySelector('.max-temp').textContent = weather.forecast_2.max_temp;
+    fc2El.querySelector('.precip').textContent = weather.forecast_2.precip;
+    fc2El.querySelector('.fc-icon').src = `//cdn.weatherapi.com/weather/128x128/day/${weather.forecast_2.icon.slice(-7)}`;
 
     fc3El.querySelector('.fc-day').textContent = days[weather.forecast_3.date.getDay()];
     fc3El.querySelector('.min-temp').textContent = weather.forecast_3.min_temp;
     fc3El.querySelector('.max-temp').textContent = weather.forecast_3.max_temp;
+    fc3El.querySelector('.precip').textContent = weather.forecast_3.precip;
+    fc3El.querySelector('.fc-icon').src = `//cdn.weatherapi.com/weather/128x128/day/${weather.forecast_3.icon.slice(-7)}`;
     }
 }
 

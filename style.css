@@ -183,5 +183,14 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+}
+
+.forecast-day-dow{
+    width: 50%;
+}
+
+.fc-icon{
+    height: 40px;
 }
 
