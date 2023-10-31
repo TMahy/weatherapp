@@ -1,8 +1,8 @@
 async function getWeather(location){
     const weatherApiKey = `860cab3f0e2041ceb07160613231308`;
-
+    
     const forecastWeather = await getForecastWeather(location);
-
+    if(forecastWeather){
     const weather = {
         temp: Math.round(forecastWeather.current.temp_c),
         text: forecastWeather.current.condition.text,
@@ -24,30 +24,29 @@ async function getWeather(location){
         }
     }
 
-    console.log(forecastWeather.current);
-
     return weather;
+    }
+    return null;
 }
 
 async function getForecastWeather(location){
     try{
-    //3 day forecast only as free plan on weatherapi.com
-    const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=860cab3f0e2041ceb07160613231308&q=${location}&days=3`);
-    const forecastWeatherData = await response.json();
-    return forecastWeatherData;
+        const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=860cab3f0e2041ceb07160613231308&q=${location}&days=3`);
+        if(response.status === 400){throw "Bad request"}
+        const forecastWeatherData = await response.json();
+        return forecastWeatherData;
     }
-    catch(error){
-        return error;
+    catch(err){
+        alert('Invalid location request please try again.');
     }
 }
 
 
 async function displayWeather(location = 'Bristol'){
-
-
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    
     const weather = await getWeather(location);
 
+    if(weather){
     const locationEl = document.getElementById("location");
     locationEl.textContent = location.charAt(0).toUpperCase() + location.toLowerCase().slice(1);
     const tempEl = document.getElementById("weather-temp");
@@ -60,7 +59,9 @@ async function displayWeather(location = 'Bristol'){
     const fc1El = document.getElementById("forecast_1");
     const fc2El = document.getElementById("forecast_2");
     const fc3El = document.getElementById("forecast_3");
- 
+
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    
     fc1El.querySelector('.fc-day').textContent = days[weather.forecast_1.date.getDay()];
     fc1El.querySelector('.min-temp').textContent = weather.forecast_1.min_temp;
     fc1El.querySelector('.max-temp').textContent = weather.forecast_1.max_temp;
@@ -72,12 +73,10 @@ async function displayWeather(location = 'Bristol'){
     fc3El.querySelector('.fc-day').textContent = days[weather.forecast_3.date.getDay()];
     fc3El.querySelector('.min-temp').textContent = weather.forecast_3.min_temp;
     fc3El.querySelector('.max-temp').textContent = weather.forecast_3.max_temp;
+    }
 }
 
-// getWeather('bristol'); 
-
 displayWeather();
-
 
 const search = document.getElementById('location-input')
 
