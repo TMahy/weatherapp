@@ -9,15 +9,17 @@
 </head>
 <body>
     <div id='weather-container'>
-        <div id="location-container">
-            
+        <div id="input-container">
+            <button type="submit" class="fas fa-search" id="searchButton">
+            </button>
             <input type="text" id="location-input" placeholder="Search...">
         </div>
         <div id="weather-summary-container">
             <h1 id="location">Bristol</h1>
-            <h2 id="time">00:00</h2>
-            <div id="weather-summary-temp"><span id="weather-temp">9</span><span class="temp-scale">°</span></div>
-            <div id="weather-summary-text"><span id="weather-text">Chilly</span></div>
+            <div id="temp-text">
+                <div id="weather-summary-temp"><span id="weather-temp">9</span><span class="temp-scale">°</span></div>
+                <div id="weather-summary-text"><span id="weather-text">Chilly</span></div>
+            </div>
             <div id="weather-summary-icon"><img id='weather-icon' src='//cdn.weatherapi.com/weather/128x128/day/296.png'></div>
         </div>
         <div id="weather-additional-container">

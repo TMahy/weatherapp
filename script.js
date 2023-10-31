@@ -4,7 +4,7 @@ async function getWeather(location){
     const forecastWeather = await getForecastWeather(location);
 
     const weather = {
-        temp: forecastWeather.current.temp_c,
+        temp: Math.round(forecastWeather.current.temp_c),
         text: forecastWeather.current.condition.text,
         icon: forecastWeather.current.condition.icon,
         forecast_1: {
@@ -48,6 +48,8 @@ async function displayWeather(location = 'Bristol'){
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const weather = await getWeather(location);
 
+    const locationEl = document.getElementById("location");
+    locationEl.textContent = location.charAt(0).toUpperCase() + location.toLowerCase().slice(1);
     const tempEl = document.getElementById("weather-temp");
     tempEl.textContent = weather.temp;
     const textEl = document.getElementById("weather-text");
